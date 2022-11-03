@@ -1,12 +1,13 @@
 package web.dao;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import web.model.Car;
 
 import java.util.ArrayList;
 import java.util.List;
-@Component
-public class CarDao {
+@Repository
+public class CarDao implements CarInterface{
     public List<Car> getCars(){
         Car car1 = new Car(1,"Audi A6",2004);
         Car car2 = new Car(2,"Porsche 911 turbo s",2010);

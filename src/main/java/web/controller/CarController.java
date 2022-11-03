@@ -8,16 +8,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import web.dao.CarDao;
+import web.service.ServiceInterface;
 
 import java.util.Optional;
 
 @Controller
 @RequestMapping("/cars")
 public class CarController {
-    private CarDao carDao;
+    private ServiceInterface serviceInterface;
     @Autowired
-    public CarController(CarDao carDao) {
-        this.carDao = carDao;
+    public CarController(ServiceInterface serviceInterface) {
+        this.serviceInterface = serviceInterface;
     }
 
     @GetMapping()
@@ -25,7 +26,7 @@ public class CarController {
             Model model){
         Optional<String> opt = Optional.ofNullable(count);
         if(!opt.isPresent()) {
-            model.addAttribute("cars", carDao.show());
+            model.addAttribute("cars", serviceInterface.show());
         }else {
             System.out.println(count);
             showSomeCars(Integer.parseInt(count),model);
@@ -34,7 +35,7 @@ public class CarController {
     }
     @GetMapping("/{number}")
     public String showSomeCars(@PathVariable("number") int id, Model model) {
-            model.addAttribute("cars",carDao.show(id));
+            model.addAttribute("cars",serviceInterface.show(id));
             return "view.car/show";
         }
 }
