@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div>
+ <h1> Dobryj den' gospodin mentor!</h1>
+    <br>
+    <p>Dobro pozhalovat' v moj avtosalon. Za vashi mentorskie zaslugi
+        ya by hotel vas poblagodarit' i predostavit' vozmozhnost' vzyat' odnu iz tachek iz moego
+        lichnogo avtosalona)
+    </p>
+    <p>Dlya prosmotra kataloga moih tachek nazhmite knopku vnizu)</p>
+    <button><a th:href="@{/cars}"
+               th:text="'Touch me for choosing your car)'">car</a></button>
+</div>
+</body>
+</html>

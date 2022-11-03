@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Saloon of cars</title>
+</head>
+<body>
+<div th:each="car : ${cars}">
+    <p th:text="${car.getSeries()} + ', ' + ${car.getAge()}">user</p>
+</div>
+<th:block th:each="i: ${#numbers.sequence(0, cars.size() - 1)}">
+    <a th:href="@{/cars/{number}(number=${i})}"
+       th:text="${i} + ' cars'">car</a>
+</th:block>
+<div th:each="car :${cars.size()}">
+<a th:href="@{/cars/{number}(number=${car})}"
+    th:text="${car} + ' cars'">car</a>
+</div>
+</body>
+</html>
